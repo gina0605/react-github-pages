@@ -85,12 +85,13 @@ Name은 `ACTIONS_DEPLOY_ACCESS_TOKEN`로, Value는 조금 전에 복사한 token
 1. 이번에는 Actions 탭을 선택한 후, set up a workflow yourself를 누릅니다.
 (사실 어차피 actions 내용은 복붙할 거라 뭘 누르든 상관 없습니다.)
 
-1. 아래 내용을 복사해 넣습니다.
-만약 master가 아닌 main 브랜치를 이용 중이라면 `master`를 `main`으로 바꿔주세요.
+1. [이 내용](https://github.com/gina0605/react-github-pages/blob/master/.github/workflows/main.yml)을 복사해 넣습니다.
+만약 master가 아닌 main 브랜치를 이용 중이라면
+5, 7줄의 `master`를 `main`으로 바꿔주세요.
 
 1. Start commit을 누르고 Commit new file을 누릅니다.
 이로서 github action을 설정하는 commit이 이루어졌습니다.
-`.github/workflow/node.js.yml`이라는 파일이 만들어졌을 것입니다.
+`.github/workflow/main.yml`이라는 파일이 만들어졌을 것입니다.
 로컬에서는 pull 받아주세요.
 
 Github actions 설정까지 되었습니다.
@@ -106,12 +107,15 @@ Github actions 설정까지 되었습니다.
 (궁금하면 직접 해보세요.
 `build/` 폴더가 만들어질 겁니다.)
 
-Github pages에는 이 `build/` 폴더만을 올려서 배포해야 합니다.
-이를 하기 위해서는 gh-pages라는 새로운 브랜치를 만들 것입니다.
+Github Pages에는 이 `build/` 폴더만을 올려서 배포해야 합니다.
+이를 하기 위해서는 gh-pages라는 새로운 브랜치를 만들고,
+이 브랜치를 Github Pages와 연결시킬 겁니다.
 
 이제 수정 사항이 있을 때마다 `npm run build`를 하고,
 그 결과를 gh-pages 브랜치에 적용시키고,
 gh-pages 브랜치를 push해주면 됩니다.
+Github Pages를 gh-pages 브랜치에 연결하는 작업도 필요하고요.
+
 ......이 귀찮은 작업을 한 번에 해주는 것이 gh-pages 라이브러리입니다.
 
 우리는 아까 package.json에서 `"deploy": "gh-pages -d build"`라는 줄을 추가했습니다.
@@ -121,13 +125,13 @@ gh-pages 브랜치를 push해주면 됩니다.
 그렇기에 우리는 `npm run deploy`만 시키면 되는 거죠.
 
 Github actions는 master 브랜치가 push되었을 때 `npm run deploy` 명령어가 실행되도록 하는 역할입니다.
-master 브랜치에 push가 이루어지면 우리가 node.js.yml에 입력한 일련의 명령어들이 runner라는 서버에서 실행됩니다.
-제로 node.js.yml 파일에 `npm run deploy` 명령어가 적혀있음을 알 수 있습니다.
+master 브랜치에 push가 이루어지면 우리가 main.yml에 입력한 일련의 명령어들이 runner라는 서버에서 실행됩니다.
+실제로 main.yml 파일을 보면 우리의 목적인 `npm run deploy` 명령어가 적혀있음을 알 수 있습니다.
 
 그리고 이 runner가 gh-pages 브랜치에 push를 하기 위해서는 권한이 필요합니다.
-그렇기에 우리가 Access token을 발급받은 것입니다. 이 token을 github secrets에 저장해두었고,
+그렇기에 우리가 Access token을 발급받은 것입니다.
+이 token을 github secrets에 저장해두었고,
 runner에서는 이 secret을 사용합니다.
-(node.js.yml에서 `git remote set-url origin https://${github_token}@github.com/${repository}` 부분)
 
 <br/>
 
