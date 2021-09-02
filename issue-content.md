@@ -44,8 +44,9 @@ commit history에 보이는 초록색 체크 표시는 배포가 성공적으로
 1. `npm install gh-pages --save`를 실행시킵니다.
 [gh-pages](https://github.com/gitname/react-gh-pages)는 React app을 github pages에 배포하는 것을 도와주는 라이브러리입니다.
 1. package.json 파일을 수정합니다.
-    - `name` 등과 같은 레벨에 `"homepage": "http://username.github.io/{repositoryname}"`를 추가합니다.
-    `{repositoryname}`에는 본인의 깃헙 레포 이름을 적으세요.
+    - `name` 등과 같은 레벨에 `"homepage": "http://{username}.github.io/{repositoryname}"`를 추가합니다.
+    `{username}`에는 본인의 깃헙 아이디를 입력하고,
+    `{repositoryname}`에는 본인의 깃헙 레포 이름을 입력하세요.
     - `scripts`에 아래 두 속성을 추가합니다.
         ```yaml
         "scripts": {
