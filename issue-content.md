@@ -22,7 +22,7 @@
 1. 깃헙에서 자신의 repository로 간 후, Settings > Pages를 누른다.
 1. Source에서 Branch로 assignment를 선택하고, Save를 누른다. 
 
-사진
+![settings-pages](https://github.com/gina0605/react-github-pages/blob/master/images/settings-pages.png?raw=true)
 
 조금 기다리면 초록색으로 `https://username.github.io/waffle-rookies-19.5-react-assignment-0/`에 배포가 완료되었다고 뜰 것입니다.
 이 링크를 들어가시면 성공적으로 배포 된 페이지를 볼 수 있습니다. 
@@ -30,8 +30,6 @@
 Settings에서 github pages를 assignment 브랜치와 연결시켜놓았기 때문에,
 앞으로 assignment 브랜치에 commit을 한 후 push를 할 때마다 해당 내용이 반영된 채 새로 배포가 될 것입니다.
 commit history에 보이는 초록색 체크 표시는 배포가 성공적으로 되었다는 뜻입니다.
-
-사진
 
 <br/>
 
@@ -75,12 +73,11 @@ Settings > Pages에서 사이트 링크를 확인할 수 있습니다.
 1. 우선 Access token이 필요합니다.
 Accout settings > Developer settings > Personal access tokens으로 들어갑니다.
 repo와 workflow 권한이 있는 token을 만듭니다.
-사진
+![access-token](https://github.com/gina0605/react-github-pages/blob/master/images/access-token.png?raw=true)
 
 1. token을 복사하고, 이번에는 repository settings로 갑니다.
 Secrets에서 New repository secret을 눌러 새로운 Secret을 만듭니다.
 Name은 `ACTIONS_DEPLOY_ACCESS_TOKEN`로, Value는 조금 전에 복사한 token으로 해주세요.
-사진
 
 1. 이번에는 Actions 탭을 선택한 후, set up a workflow yourself를 누릅니다.
 (사실 어차피 actions 내용은 복붙할 거라 뭘 누르든 상관 없습니다.)
@@ -88,6 +85,7 @@ Name은 `ACTIONS_DEPLOY_ACCESS_TOKEN`로, Value는 조금 전에 복사한 token
 1. [이 내용](https://github.com/gina0605/react-github-pages/blob/master/.github/workflows/main.yml)을 복사해 넣습니다.
 만약 master가 아닌 main 브랜치를 이용 중이라면
 5, 7줄의 `master`를 `main`으로 바꿔주세요.
+![github-actions](https://github.com/gina0605/react-github-pages/blob/master/images/github-actions.png?raw=true)
 
 1. Start commit을 누르고 Commit new file을 누릅니다.
 이로서 github action을 설정하는 commit이 이루어졌습니다.
@@ -116,7 +114,7 @@ Github Pages에는 이 `build/` 폴더만을 올려서 배포해야 합니다.
 gh-pages 브랜치를 push해주면 됩니다.
 Github Pages를 gh-pages 브랜치에 연결하는 작업도 필요하고요.
 
-......이 귀찮은 작업을 한 번에 해주는 것이 gh-pages 라이브러리입니다.
+......이 귀찮은 작업을 한 번에 해주는 것이 [gh-pages](https://github.com/gitname/react-gh-pages) 라이브러리입니다.
 
 우리는 아까 package.json에서 `"deploy": "gh-pages -d build"`라는 줄을 추가했습니다.
 이는 `npm run deploy` 명령어가 `gh-pages -d build`를 실행하도록 하겠다는 뜻입니다.
