@@ -1,6 +1,6 @@
 내가 만든 index.html과 react app을 모두가 볼 수 있도록 배포하는 방법에 대해 정리해보았습니다.
 
-**index.html 배포는 정말 쉬우니 한번 해보세요~~** :+1:
+**index.html 배포는 정말 쉬우니 한 번 해보세요~~** :+1:
 
 <br/>
 
@@ -88,7 +88,7 @@ Name은 `ACTIONS_DEPLOY_ACCESS_TOKEN`로, Value는 조금 전에 복사한 token
 ![github-actions](https://github.com/gina0605/react-github-pages/blob/master/images/github-actions.png?raw=true)
 
 1. Start commit을 누르고 Commit new file을 누릅니다.
-이로서 github action을 설정하는 commit이 이루어졌습니다.
+이로써 github action을 설정하는 commit이 이루어졌습니다.
 `.github/workflow/main.yml`이라는 파일이 만들어졌을 것입니다.
 로컬에서는 pull 받아주세요.
 
@@ -100,21 +100,21 @@ Github actions 설정까지 되었습니다.
 
 ## 원리
 
-과제2에서 우리는 index.html을 만들지 않았고, 대신 `src/` 폴더에 `index.js` 등의 파일이 위치하게 됩니다.
+과제2에서 우리는 index.html을 만들지 않았고, 대신 `src/` 폴더에 `index.js` 등의 파일이 위치합니다.
 이를 배포에 적합하게 만들기 위해서는 `npm run build`를 실행하면 됩니다.
 (궁금하면 직접 해보세요.
 `build/` 폴더가 만들어질 겁니다.)
 
-Github Pages에는 이 `build/` 폴더만을 올려서 배포해야 합니다.
-이를 하기 위해서는 gh-pages라는 새로운 브랜치를 만들고,
+Github Pages에는 이 `build/` 폴더의 내용만을 올려서 배포해야 합니다.
+이를 하기 위해서는 gh-pages라는 새로운 브랜치를 만들어서 그 브랜치에는 build된 내용만을 넣어놓고,
 이 브랜치를 Github Pages와 연결시킬 겁니다.
 
-이제 수정 사항이 있을 때마다 `npm run build`를 하고,
+이제 코드에 수정 사항이 있을 때마다 `npm run build`를 하고,
 그 결과를 gh-pages 브랜치에 적용시키고,
 gh-pages 브랜치를 push해주면 됩니다.
-Github Pages를 gh-pages 브랜치에 연결하는 작업도 필요하고요.
+Github Pages를 gh-pages 브랜치에 연결하는 작업도 필요하고요. 귀찮군요.
 
-......이 귀찮은 작업을 한 번에 해주는 것이 [gh-pages](https://github.com/gitname/react-gh-pages) 라이브러리입니다.
+이 작업을 한 번에 해주는 것이 [gh-pages](https://github.com/gitname/react-gh-pages) 라이브러리입니다.
 
 우리는 아까 package.json에서 `"deploy": "gh-pages -d build"`라는 줄을 추가했습니다.
 이는 `npm run deploy` 명령어가 `gh-pages -d build`를 실행하도록 하겠다는 뜻입니다.
