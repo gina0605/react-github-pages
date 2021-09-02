@@ -55,6 +55,7 @@ commit history에 보이는 초록색 체크 표시는 배포가 성공적으로
             "deploy": "gh-pages -d build"
         }
         ```
+    - 완성된 package.json은 [이것](https://github.com/gina0605/react-github-pages/blob/master/package.json)과 비슷한 형태일 것입니다.
  1. `npm run deploy`를 실행시킵니다.
  
 깃헙으로 가보면 gh-pages라는 브랜치가 만들어져있고, github pages 설정도 되어있을 것입니다.
@@ -71,17 +72,22 @@ Settings > Pages에서 사이트 링크를 확인할 수 있습니다.
  
 [Github Actions](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions)는 push 등의 이벤트가 발생했을 때 배포 등과 관련된 코드가 실행되도록 해줍니다.
 
-1. 우선 Access token이 필요합니다. Accout settings > Developer settings > Personal access tokens으로 들어갑니다. 
+1. 우선 Access token이 필요합니다.
+Accout settings > Developer settings > Personal access tokens으로 들어갑니다.
+repo와 workflow 권한이 있는 token을 만듭니다.
 사진
-1. Generate new token을 누르고, repo와 workflow 권한이 있는 token을 만듭니다.
+
 1. token을 복사하고, 이번에는 repository settings로 갑니다.
 Secrets에서 New repository secret을 눌러 새로운 Secret을 만듭니다.
 Name은 `ACTIONS_DEPLOY_ACCESS_TOKEN`로, Value는 조금 전에 복사한 token으로 해주세요.
-1. 이번에는 Actions 탭을 선택한 후, New workflow 버튼을 누릅니다. 
-1. Node.js의 Set up this workflow를 선택합니다.
+사진
+
+1. 이번에는 Actions 탭을 선택한 후, set up a workflow yourself를 누릅니다.
 (사실 어차피 actions 내용은 복붙할 거라 뭘 누르든 상관 없습니다.)
+
 1. 아래 내용을 복사해 넣습니다.
 만약 master가 아닌 main 브랜치를 이용 중이라면 `master`를 `main`으로 바꿔주세요.
+
 1. Start commit을 누르고 Commit new file을 누릅니다.
 이로서 github action을 설정하는 commit이 이루어졌습니다.
 `.github/workflow/node.js.yml`이라는 파일이 만들어졌을 것입니다.
