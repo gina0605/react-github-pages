@@ -78,6 +78,7 @@ repo와 workflow 권한이 있는 token을 만듭니다.
 1. token을 복사하고, 이번에는 repository settings로 갑니다.
 Secrets에서 New repository secret을 눌러 새로운 Secret을 만듭니다.
 Name은 `ACTIONS_DEPLOY_ACCESS_TOKEN`로, Value는 조금 전에 복사한 token으로 해주세요.
+![secrets-censored](https://github.com/gina0605/react-github-pages/blob/master/images/secrets-censored.png?raw=true)
 
 1. 이번에는 Actions 탭을 선택한 후, set up a workflow yourself를 누릅니다.
 (사실 어차피 actions 내용은 복붙할 거라 뭘 누르든 상관 없습니다.)
